@@ -1,0 +1,58 @@
+{
+  "name": "gopeed-extension-quark",
+  "author": "muyan556",
+  "title": "夸克网盘解析下载 (支持扫码登录)",
+  "description": "支持夸克网盘分享链接与个人网盘目录递归下载，内置扫码登录自动获取并保活 __puus Cookie",
+  "icon": "icon.png",
+  "version": "1.0.5",
+  "homepage": "https://github.com/muyan556/gopeed-extension-quark",
+  "repository": {
+    "url": "https://github.com/muyan556/gopeed-extension-quark"
+  },
+  "scripts": [
+    {
+      "event": "onResolve",
+      "match": {
+        "urls": [
+          "*://pan.quark.cn/s/*",
+          "*://drive.quark.cn/s/*",
+          "*://pan.quark.cn/list*",
+          "*://drive.quark.cn/list*"
+        ]
+      },
+      "entry": "dist/index.js"
+    },
+    {
+      "event": "onStart",
+      "match": {
+        "urls": [
+          "*://*.quark.cn/*"
+        ]
+      },
+      "entry": "dist/index.js"
+    }
+  ],
+  "settings": [
+    {
+      "name": "cookie",
+      "title": "夸克网盘 Cookie (可选)",
+      "description": "留空则会在创建下载任务时自动弹出二维码扫码获取；若手动填写，需包含 __puus 字段",
+      "type": "string",
+      "value": ""
+    },
+    {
+      "name": "relogin",
+      "title": "下次解析时强制重新扫码",
+      "description": "开启后，下次解析链接时会忽略已有缓存并重新弹出二维码窗口（扫码成功后请关闭此开关）",
+      "type": "boolean",
+      "value": false
+    },
+    {
+      "name": "cleanTemp",
+      "title": "解析后自动删除转存临时文件",
+      "description": "开启后，获取直链后会自动清理网盘 GopeedTemp 目录下的本次转存文件以释放网盘空间",
+      "type": "boolean",
+      "value": true
+    }
+  ]
+}

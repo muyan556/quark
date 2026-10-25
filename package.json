@@ -1,0 +1,24 @@
+{
+  "name": "gopeed-extension-quark",
+  "version": "1.0.5",
+  "scripts": {
+    "dev": "webpack --mode development --watch",
+    "build": "webpack --mode production"
+  },
+  "dependencies": {
+    "superagent": "9.0.2"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.22.5",
+    "@babel/preset-env": "^7.22.5",
+    "babel-loader": "^9.1.2",
+    "gopeed": "^1.0.5",
+    "webpack": "^5.88.0",
+    "webpack-cli": "^5.1.4"
+  },
+  "pnpm": {
+    "patchedDependencies": {
+      "superagent@9.0.2": "patches/superagent@9.0.2.patch"
+    }
+  }
+}
